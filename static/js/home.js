@@ -51,7 +51,6 @@ function appendCards(cards) {
 		var year = date.getYear() + 1900;
 		var dateString = month + "/" + date.getDate() + "/" + year;
 		var id = card._id
-		// console.log(cardHandler);
 		cardHandler.loadCard({"id": id, "question": question, "answer": answer, "topics": topics, "date": dateString});
 	}
 }
