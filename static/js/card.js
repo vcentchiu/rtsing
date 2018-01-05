@@ -14,7 +14,8 @@ CardHandler.prototype.init = function() {
 		return (this.answerStatus[id] == 1);
 	}
 	
-	this.loadCards(0);
+	// this.loadCards(0);
+	console.log(this.locks);
 }
 
 
@@ -51,23 +52,29 @@ CardHandler.prototype.loadCard = function(data) {
 
 	var cardTitle = document.createElement("div");
 	cardTitle.setAttribute("class", "card-title");
-	cardTitle.html(question + "<div class=\"card-date\">" + question + "</div>");
+	cardTitle.innerHTML = question + "<div class=\"card-date\">" + date + "</div>";
 
 	var cardBody = document.createElement("div");
 	cardBody.setAttribute("class", "card-body");
 
+	var cardAnswer = document.createElement("div");
+	cardAnswer.setAttribute("class", "card-answer");
+	$(cardAnswer).text("answer");
+	cardBody.append(cardAnswer);
+
 	var cardBodyInner = document.createElement("div");
 	cardBodyInner.setAttribute("class", "card-body-inner");
-	cardBodyInner.html(answer);
+	$(cardBodyInner).text(answer);
 	cardBody.append(cardBodyInner);
 
 	var cardTags = document.createElement("div");
 	cardTags.setAttribute("class", "card-tags");
 
-	for (var topic in topics) {
+	for (var index in topics) {
+		topic = topics[index];
 		var cardTag = document.createElement("div");
 		cardTag.setAttribute("class", "card-tag");
-		cardTag.html(topic);
+		$(cardTag).text(topic);
 		cardTags.append(cardTag);
 	}
 
