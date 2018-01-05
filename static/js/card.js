@@ -7,10 +7,22 @@ CardHandler.prototype.init = function() {
 	this.locks = {};
 	this.answerStatus = {};
 	
+	this.isLocked = function(id) {
+		return (this.locks[id] == 1);
+	}
+	this.isAnswered = function(id) {
+		return (this.answerStatus[id] == 1);
+	}
+	
+	this.loadCards(0);
+}
+
+
+CardHandler.prototype.loadCards = function(startCard) {
 	var cards = $('#card-container').find('.card');
 	this.cards = cards.length;
 
-	for (var i = 0; i < cards.length; i++) {
+	for (var i = startCard; i < cards.length; i++) {
 		var $card = $(cards[i]);
 		var $cardBody = $card.find('.card-body');
 
@@ -20,17 +32,50 @@ CardHandler.prototype.init = function() {
 		this.locks[id] = 0;
 	};
 
-	this.isLocked = function(id) {
-		return (this.locks[id] == 1);
-	}
-	this.isAnswered = function(id) {
-		return (this.answerStatus[id] == 1);
-	}
-	
 }
 
-CardHandler.prototype.loadCard = function(cardDict) {
-	var id = cardDict[id];
+CardHandler.prototype.loadCard = function(data) {
+	var self = this;
+	self.locks[id] = 0;
+	self.answerStatus[id] = 0;
+
+	var question = data.question;
+	var answer = data.answer;
+	var topics = data.topics;
+	var date = data.date;
+	var id = data.id;
+
+	var cardDiv = document.createElement("div");
+	cardDiv.setAttribute("class", "card");
+	cardDiv.setAttribute("id", id);
+
+	var cardTitle = document.createElement("div");
+	cardTitle.setAttribute("class", "card-title");
+	cardTitle.html(question + "<div class=\"card-date\">" + question + "</div>");
+
+	var cardBody = document.createElement("div");
+	cardBody.setAttribute("class", "card-body");
+
+	var cardBodyInner = document.createElement("div");
+	cardBodyInner.setAttribute("class", "card-body-inner");
+	cardBodyInner.html(answer);
+	cardBody.append(cardBodyInner);
+
+	var cardTags = document.createElement("div");
+	cardTags.setAttribute("class", "card-tags");
+
+	for (var topic in topics) {
+		var cardTag = document.createElement("div");
+		cardTag.setAttribute("class", "card-tag");
+		cardTag.html(topic);
+		cardTags.append(cardTag);
+	}
+
+	cardDiv.append(cardTitle);
+	cardDiv.append(cardBody);
+	cardDiv.append(cardTags);
+
+	$("#card-container").append(cardDiv);
 }
 
 
@@ -68,8 +113,8 @@ CardHandler.prototype.getAnswer = function($card) {
 	}
 }
 
-
 $(function() {
+	// getDBCards();
 	var cardHandler = new CardHandler();
 	cardHandler.init();
 	console.log(cardHandler);

@@ -4,6 +4,7 @@ body {
 
 #main {
 	padding: 10px;
+	padding-top: 40px;
 }
 
 #navbar {
@@ -26,6 +27,10 @@ body {
 	line-height: 66px;
 	color : #2f2f2f;
 	font-size: 20px;
+}
+
+#topics {
+	margin-top: 10px;
 }
 
 #topics li {
