@@ -1,23 +1,24 @@
 body {
 	background-color : #ebebeb;
 }
-
 #main {
 	padding: 10px;
-	padding-top: 40px;
+	padding-top: 100px;
 }
 
 #navbar {
+	position: fixed;
 	background-color : #f9f9f9;
 	height: 66px;
 	width: 100%;
 	text-align: left;
+	z-index: 100;
 }
 
 #left-navbar {
 	/*background-color : #ebebeb;*/
 	display: block;
-	position: absolute;
+	position: fixed;
 	max-width: 20%;
 	margin: 0 auto;
 	padding: 0 20px;
@@ -41,7 +42,7 @@ body {
 }
 
 #qbutton {
-	position: absolute;
+	position: fixed;
 	bottom: 10px;
 	margin: 20px;
 }

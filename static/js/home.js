@@ -1,3 +1,6 @@
+var cardHandler;
+
+
 function hideQuestionModal() {
 	$("#addQuestion").modal('hide');
 }
@@ -48,6 +51,8 @@ function appendCards(cards) {
 		var year = date.getYear() + 1900;
 		var dateString = month + "/" + date.getDate() + "/" + year;
 		var id = card._id
+		// console.log(cardHandler);
+		cardHandler.loadCard({"id": id, "question": question, "answer": answer, "topics": topics, "date": dateString});
 	}
 }
 
@@ -68,6 +73,9 @@ function getCards(topic, start, end) {
 }
 
 function init() {
+	cardHandler = new CardHandler();
+	cardHandler.init();	
+
 	$("#topics li").on('click', highlightNavigation);
 	$("#topics li").hover(mouseEnterTopic, mouseLeaveTopic);
 	getCards(-1, 0, 10);
