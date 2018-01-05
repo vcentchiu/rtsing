@@ -1,3 +1,7 @@
+function addQuestion() {
+
+}
+
 function highlightNavigation(event) {
 	console.log(event);
 }
@@ -10,7 +14,9 @@ function mouseLeaveTopic(event) {
 	$(this).css("background-color", "#ebebeb");
 }
 
-$(document).ready(function() {
+function init() {
 	$("#topics li").on('click', highlightNavigation);
 	$("#topics li").hover(mouseEnterTopic, mouseLeaveTopic);
-});
+}
+
+$(document).ready(init());

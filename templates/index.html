@@ -7,7 +7,6 @@
 		<link rel="stylesheet" type="text/css" href="static/css/base.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
-		<script src="static/js/home.js"></script>
 	</head>
 	<body>
 		<div id="navbar" class="navbar">
@@ -25,5 +24,35 @@
 				</ul>
 			</div>
 		</div>
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addQuestion">
+			Add Question
+		</button>
+		<div id="addQuestion" class="modal fade">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Add Question</h5>
+					</div>
+					<div class="modal-body">
+						<div class="input-group input-group-sm mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text">Q</span>
+							</div>
+							<input type="text" class="form-control" placeholder="Explain logistic regression.">
+						</div>
+						<div class="input-group input-group-sm mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text">A</span>
+							</div>
+							<input type="text" class="form-control" placeholder="Logistic regression is...">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary">Add</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
+	<script src="static/js/home.js"></script>
 </html>
