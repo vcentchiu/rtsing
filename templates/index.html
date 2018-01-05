@@ -3,13 +3,14 @@
 	<title>data science interview questions</title>
 	<head>
 		<meta charset="utf-8"/>
-		<link rel="stylesheet" tyle="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"> 
+		<link rel="stylesheet" tyle="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+		<link rel="stylesheet" href="static/css/tagsinput.css"/>
 		<link rel="stylesheet" type="text/css" href="static/css/base.css">
 		<link rel="stylesheet" type="text/css" href="static/css/card.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+		<script src="static/js/tagsinput.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
-
 		<script src="static/js/card.js"> </script>
 	</head>
 	<body>
@@ -18,23 +19,10 @@
 				<h1 id="title">data science interview questions</h1>
 			</div>
 		</div>
-		<!-- <div class="container">
-			<div id="left-navbar" class="navbar navbar-inverse navbar-fixed-left">
-				<ul class="nav navbar-nav" id="topics">
-					<li>probability</li>
-					<li>statistics</li>
-					<li>machine learning</li>
-					<li>data engineering</li>
-				</ul>
-			</div>
-		</div>
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addQuestion">
-			Add Question
-		</button> -->
 
 		<div id="main"> 
 			<div id="left-navbar" class="navbar navbar-inverse navbar-fixed-left">
-				<div class="title"> TOPICS </div>
+				<div class="title"> topics </div>
 				<ul class="nav navbar-nav" id="topics">
 					<li>probability</li>
 					<li>statistics</li>
@@ -65,11 +53,15 @@
 								</div>
 								<input type="text" class="form-control" placeholder="Logistic regression is...">
 							</div>
+							<div class="input-group input-group-sm mb-3">
+								<input id="tags" type="text" value="" data-role="tagsinput"/>
+							</div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-primary">Add</button>
 						</div>
 					</div>
+					
 				</div>
 			</div>
 
@@ -105,8 +97,7 @@
 		        </div>
 			</div>
 		</div>
-        
-    
+       
 	</body>
 	<script src="static/js/home.js"></script>
 	
