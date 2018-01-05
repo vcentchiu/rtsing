@@ -4,9 +4,11 @@
 	<head>
 		<meta charset="utf-8"/>
 		<link rel="stylesheet" tyle="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+		<link rel="stylesheet" href="static/css/tagsinput.css"/>
 		<link rel="stylesheet" type="text/css" href="static/css/base.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+		<script src="static/js/tagsinput.js"></script>
 	</head>
 	<body>
 		<div id="navbar" class="navbar">
@@ -45,6 +47,9 @@
 								<span class="input-group-text">A</span>
 							</div>
 							<input type="text" class="form-control" placeholder="Logistic regression is...">
+						</div>
+						<div class="input-group input-group-sm mb-3">
+							<input id="tags" type="text" value="" data-role="tagsinput"/>
 						</div>
 					</div>
 					<div class="modal-footer">
