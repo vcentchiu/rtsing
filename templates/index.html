@@ -29,10 +29,11 @@
 					<li>machine learning</li>
 					<li>data engineering</li>
 				</ul>
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addQuestion">
-					Add Question
-				</button>
 			</div>
+
+			<button type="button" id="qbutton" class="btn btn-primary" data-toggle="modal" data-target="#addQuestion">
+					Add Question
+			</button>
 
 			<div id="addQuestion" class="modal fade">
 				<div class="modal-dialog" role="document">
@@ -45,20 +46,20 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text">Q</span>
 								</div>
-								<input type="text" class="form-control" placeholder="Explain logistic regression.">
+								<input id="questionString" type="text" class="form-control" placeholder="Explain logistic regression.">
 							</div>
 							<div class="input-group input-group-sm mb-3">
 								<div class="input-group-prepend">
 									<span class="input-group-text">A</span>
 								</div>
-								<input type="text" class="form-control" placeholder="Logistic regression is...">
+								<input id="answerString" type="text" class="form-control" placeholder="Logistic regression is...">
 							</div>
 							<div class="input-group input-group-sm mb-3">
 								<input id="tags" type="text" value="" data-role="tagsinput"/>
 							</div>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-primary">Add</button>
+							<button type="button" id="qsubmit" class="btn btn-primary">Add</button>
 						</div>
 					</div>
 					
@@ -66,7 +67,7 @@
 			</div>
 
 			<div id="card-container">
-				<div> RECENT QUESTIONS </div>
+				<div>recent questions</div>
 					<div class="card">
 						<div class="card-title"> 
 							test question <div class="card-date"> 1/5/18 </div>
@@ -81,23 +82,20 @@
 							<div class="card-tag"> linear algebra</div>
 						</div>
 					</div>
-			<div class="card">
-				<div class="card-title"> 
-					test question <div class="card-date"> 1/5/18 </div>
-				</div> 
-				<div class="card-body"> 
-					<div class="card-body-inner"> answer: blah blah blah balh </div>
-				</div>
-				<div class="card-tags"> 
-					<div class="card-tag"> probability </div>
-					<div class="card-tag"> linear algebra</div>
-				</div>
+					<div class="card">
+						<div class="card-title"> 
+							test question <div class="card-date"> 1/5/18 </div>
+						</div> 
+						<div class="card-body"> 
+							<div class="card-body-inner"> answer: blah blah blah balh </div>
+						</div>
+						<div class="card-tags"> 
+							<div class="card-tag"> probability </div>
+							<div class="card-tag"> linear algebra</div>
+						</div>
+					</div>
 			</div>
 		</div>
-		
-		
-	
 	</body>
 	<script src="static/js/home.js"></script>
-	
 </html>

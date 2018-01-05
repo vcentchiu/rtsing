@@ -23,9 +23,9 @@ class MongoDB():
 	def get_questions(self, topic, start=0, end=10):
 		try:
 			collection = self.database['question']
-			if topic == -1 or topic == None:
+			if topic == "-1" or topic == None:
 				start = min(start, collection.count())
-				return collection.find({}).skip(start).limit(end - start)
+				return list(collection.find({}).skip(start).limit(end - start))
 			else:
 				criteria = {"topics" : {"$in" : [topic]}}
 				start = min(start, collection.find(criteria).count())

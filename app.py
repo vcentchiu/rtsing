@@ -21,6 +21,7 @@ def index():
 @app.route("/api/question/add", methods=["POST"])
 def add_question():
 	try:
+		print(request.data)
 		req_data = request.get_json()
 		question_str = req_data["question"]
 		answer_str = req_data["answer"]
@@ -31,6 +32,7 @@ def add_question():
 			return jsonify(error_msg)
 		return jsonify({"id": str(result), "success" : 1})
 	except Exception as e:
+		print(e)
 		return jsonify(error_msg)
 
 @app.route("/api/question/get")
