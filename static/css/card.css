@@ -1,0 +1,103 @@
+/*
+
+
+card-body #E7E7E7;
+tag font: #EfEfEf;
+bg #f0f0f0;
+#ebebeb;
+
+*/
+
+
+body {
+	background: #f0f0f0;
+	font-size: 12px;
+	font-family: Roboto;
+	color: #2e2e2e;
+}
+
+
+#card-container {
+	margin: 0 auto;
+	max-width: 700px;
+}
+.card {
+	margin: 15px 0;
+	padding: 20px;
+	background: #f9f9f9;
+	border-radius: 4px;
+	cursor: default;
+}
+
+.card:hover {
+	border: black;
+	box-shadow: 0 1px 15px rgba(200,200,200,0.12), 0 1px 5px rgba(200,200,200,0.24);
+}
+
+.card-title {
+	font-size: 15px;
+	font-weight: bold;
+	/*margin: 5px 0;*/
+	margin-bottom: 20px;
+}
+
+.card-date {
+	float: right;
+	font-weight: thin;
+	font-size: 10px;
+	opacity: .5;
+}
+
+.card-body {
+	position: relative;
+	background: #E7E7E7;
+	border-radius: 4px;
+	margin-bottom: 10px;
+	/*overflow: hidden;*/
+	/*height: auto;*/
+	/*padding: 0;*/
+}
+
+.card-answer {
+	padding: 2px 5px;
+	/*font-size: 10px;*/
+	font-weight: bold;
+	position: absolute;
+	right: 0;
+	opacity: .5;
+}
+
+.card-body-inner {
+	/*padding: 10px;*/
+	/*height: 0;*/
+	height: auto;
+	
+	padding: 20px 15px;
+	opacity: 0;
+}
+
+.card-open {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.card-tags {
+	/*float: right;*/
+	height: 10px;
+	line-height: 10px;
+	/*padding: 5px;*/
+	/*margin-bottom: 20px;*/
+	opacity: 0;
+}
+
+.card-tag {
+	float: right;
+	display: inline-block;
+	margin-bottom: 20px;
+	margin-left: 8px;
+	opacity: .5;
+}
+
+.card-tag:hover {
+	opacity: .8;
+}
