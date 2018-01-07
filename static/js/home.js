@@ -52,6 +52,7 @@ function appendCards(cards) {
 		var id = card._id
 		cardHandler.loadCard({"id": id, "question": question, "answer": answer, "topics": topics, "date": dateString});
 	}
+	loadLatex();
 }
 
 function getCards(topic, start, end) {
@@ -74,23 +75,24 @@ function loadLatexCompiler() {
 	MathJax.Hub.Config({
      tex2jax: {
        inlineMath: [['$','$'], ['\\(','\\)']],
-       skipTags: ["script","noscript","style","textarea","pre","code"],
-       ignoreClass: "textarea"
-      }
+      },
+      showProcessingMessages: false,
     });   
 }
 
-function loadLatexParser() {
-	$("#answerString").keyup(function (){
-		$("#answerLatex").html($(this).val());
-		MathJax.Hub.Typeset();
-		MathJax.Hub.Queue(["Rerender",MathJax.Hub,this]);
-	});
-	$("#questionString").keyup(function (){
-		$("#questionLatex").html($(this).val());
-		MathJax.Hub.Typeset();
-		MathJax.Hub.Queue(["Rerender",MathJax.Hub,this]);
-	});
+function questionLatexParser(item) {
+	document.getElementById('questionLatex').innerHTML = document.getElementById("questionString").value;
+	MathJax.Hub.Queue(["Typeset",MathJax.Hub,"questionLatex"]);
+}
+
+function answerLatexParser(item) {
+	document.getElementById('answerLatex').innerHTML = document.getElementById("answerString").value;
+	MathJax.Hub.Queue(["Typeset",MathJax.Hub,"answerLatex"]);
+}
+
+function loadLatex() {
+	MathJax.Hub.Queue(["Typeset",MathJax.Hub,"questionLatex"]);
+	MathJax.Hub.Queue(["Typeset",MathJax.Hub,"answerLatex"]);
 }
 
 function init() {
@@ -102,7 +104,6 @@ function init() {
 	getCards(-1, 0, 10);
 	$("#qsubmit").on('click', addQuestion);
 	loadLatexCompiler();
-	loadLatexParser();
 }
 
 $(document).ready(init());

@@ -32,7 +32,6 @@ CardHandler.prototype.loadCards = function(startCard) {
 		this.answerStatus[id] = 0;
 		this.locks[id] = 0;
 	};
-
 }
 
 CardHandler.prototype.loadCard = function(data) {

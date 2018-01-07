@@ -56,17 +56,21 @@
 							</div>
 							<br>
 							<div class="input-group input-group-sm mb-3">
-								<textarea rows=4 id="questionString" type="text" class="form-control" placeholder="Explain logistic regression."></textarea>
+								<textarea onkeyup="questionLatexParser(this)" rows=4 id="questionString" type="text" class="form-control" placeholder="Explain logistic regression."></textarea>
+							</div>
+							<div class="question-header">
+								Answer
+							</div>
+							<div class="question-subheader">
+								preview
 							</div>
 							<div class="latex-preview" id="answerLatex">
 
 							</div>
 							<br>
-							<div class="question-header">
-								Answer
-							</div>
+							
 							<div class="input-group input-group-sm mb-3">
-								<textarea rows=6 id="answerString" type="text" class="form-control" placeholder="Logistic regression is..."></textarea>
+								<textarea onkeyup="answerLatexParser(this)" rows=6 id="answerString" type="text" class="form-control" placeholder="Logistic regression is..."></textarea>
 							</div>
 							<div class="question-header">
 								Topics
