@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from db import mongo
 from question import Question
+from answer import Answer
 from bson import json_util, ObjectId
 import json 
 
@@ -21,12 +22,11 @@ def index():
 @app.route("/api/question/add", methods=["POST"])
 def add_question():
 	try:
-		print(request.data)
 		req_data = request.get_json()
 		question_str = req_data["question"]
 		answer_str = req_data["answer"]
 		topic_list = req_data["topics"]
-		q = Question(question_str, answer_str, topic_list)
+		q = Question(question_str, Answer(answer_str), topic_list)
 		result = mongo.add_question(q)
 		if result == -1:
 			return jsonify(error_msg)
@@ -52,6 +52,15 @@ def get_questions():
 	except Exception as e:
 		print(e)
 		return jsonify(error_msg)
+
+@app.route("/api/question/edit")
+def edit_question():
+	_id = request.args.get("id")
+	new_answer = request.args.get("answer")
+	if mongo.update_question_answer(_id, answer):
+		return jsonify({"success" : 1})
+	return jsonify(error_msg)
+
 
 if __name__ == "__main__":
 	app.run(debug=True)

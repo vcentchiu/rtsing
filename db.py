@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+from bson import ObjectId
 import os
 
 DATABASE_URI = os.environ.get("MONGODB_URI") or "mongodb://kunal:vincent@ds239387.mlab.com:39387/heroku_tzjvsx26"
@@ -33,5 +34,16 @@ class MongoDB():
 		except Exception as e:
 			print(e)
 			return -1
+
+	def update_question_answer(self, id, answer):
+		try:
+			collection = self.database['question']
+			question = collection.find_one({"_id" : ObjectId(id)})
+			q = Question.from_dictionary(question)
+			q.update_answer(answer)
+			return True
+		except:
+			return False
+
 
 mongo = MongoDB()

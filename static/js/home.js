@@ -1,6 +1,5 @@
 var cardHandler;
 
-
 function hideQuestionModal() {
 	$("#addQuestion").modal('hide');
 }
@@ -71,6 +70,29 @@ function getCards(topic, start, end) {
 	});
 }
 
+function loadLatexCompiler() {
+	MathJax.Hub.Config({
+     tex2jax: {
+       inlineMath: [['$','$'], ['\\(','\\)']],
+       skipTags: ["script","noscript","style","textarea","pre","code"],
+       ignoreClass: "textarea"
+      }
+    });   
+}
+
+function loadLatexParser() {
+	$("#answerString").keyup(function (){
+		$("#answerLatex").html($(this).val());
+		MathJax.Hub.Typeset();
+		MathJax.Hub.Queue(["Rerender",MathJax.Hub,this]);
+	});
+	$("#questionString").keyup(function (){
+		$("#questionLatex").html($(this).val());
+		MathJax.Hub.Typeset();
+		MathJax.Hub.Queue(["Rerender",MathJax.Hub,this]);
+	});
+}
+
 function init() {
 	cardHandler = new CardHandler();
 	cardHandler.init();	
@@ -79,6 +101,8 @@ function init() {
 	$("#topics li").hover(mouseEnterTopic, mouseLeaveTopic);
 	getCards(-1, 0, 10);
 	$("#qsubmit").on('click', addQuestion);
+	loadLatexCompiler();
+	loadLatexParser();
 }
 
 $(document).ready(init());

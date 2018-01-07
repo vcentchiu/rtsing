@@ -12,6 +12,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
 		<script src="static/js/tagsinput.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML-full"></script>
 		<script src="static/js/card.js"></script>
 	</head>
 	<body>
@@ -43,17 +44,32 @@
 							<h5 class="modal-title">Add Question</h5>
 						</div>
 						<div class="modal-body">
+							<div class="question-header">
+								Question
+							</div>
+							<div class="question-subheader">
+								preview
+							</div>
+							
+							<div class="latex-preview" id="questionLatex">
+
+							</div>
+							<br>
 							<div class="input-group input-group-sm mb-3">
-								<div class="input-group-prepend">
-									<span class="input-group-text">Q</span>
-								</div>
-								<input id="questionString" type="text" class="form-control" placeholder="Explain logistic regression.">
+								<textarea rows=4 id="questionString" type="text" class="form-control" placeholder="Explain logistic regression."></textarea>
+							</div>
+							<div class="latex-preview" id="answerLatex">
+
+							</div>
+							<br>
+							<div class="question-header">
+								Answer
 							</div>
 							<div class="input-group input-group-sm mb-3">
-								<div class="input-group-prepend">
-									<span class="input-group-text">A</span>
-								</div>
-								<input id="answerString" type="text" class="form-control" placeholder="Logistic regression is...">
+								<textarea rows=6 id="answerString" type="text" class="form-control" placeholder="Logistic regression is..."></textarea>
+							</div>
+							<div class="question-header">
+								Topics
 							</div>
 							<div class="input-group input-group-sm mb-3">
 								<input id="tags" type="text" value="" data-role="tagsinput"/>
