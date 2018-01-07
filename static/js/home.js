@@ -50,9 +50,8 @@ function appendCards(cards) {
 		var year = date.getYear() + 1900;
 		var dateString = month + "/" + date.getDate() + "/" + year;
 		var id = card._id
-		cardHandler.loadCard({"id": id, "question": question, "answer": answer, "topics": topics, "date": dateString});
+		cardHandler.loadCard({"id": id, "question": question, "answer": answer, "topics": topics, "date": dateString}, loadLatexCompiler);
 	}
-	loadLatex();
 }
 
 function getCards(topic, start, end) {
@@ -103,7 +102,6 @@ function init() {
 	$("#topics li").hover(mouseEnterTopic, mouseLeaveTopic);
 	getCards(-1, 0, 10);
 	$("#qsubmit").on('click', addQuestion);
-	loadLatexCompiler();
 }
 
 $(document).ready(init());

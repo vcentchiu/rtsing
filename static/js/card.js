@@ -34,7 +34,7 @@ CardHandler.prototype.loadCards = function(startCard) {
 	};
 }
 
-CardHandler.prototype.loadCard = function(data) {
+CardHandler.prototype.loadCard = function(data, oncomplete) {
 	var self = this;
 	self.locks[id] = 0;
 	self.answerStatus[id] = 0;
@@ -82,6 +82,7 @@ CardHandler.prototype.loadCard = function(data) {
 	cardDiv.append(cardTags);
 
 	$("#card-container").append(cardDiv);
+	oncomplete();
 }
 
 
