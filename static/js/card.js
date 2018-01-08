@@ -79,6 +79,8 @@ CardHandler.prototype.loadCard = function(data) {
 	cardDiv.append(cardBody);
 	cardDiv.append(cardTags);
 
+	this.startCardAnim(cardDiv);
+
 	$("#card-container").append(cardDiv);
 	window.refreshLatex();
 }
@@ -97,43 +99,48 @@ CardHandler.prototype.mouseLeave = function(event) {
 	div.velocity("reverse");
 }
 
-CardHandler.prototype.getAnswer = function(event) {
-	var $card = $(this);
-	var id = $card.attr('id');
-	console.log(this.isLocked(id));
-	if (this.isLocked(id)) return;
-	this.locks[id] = 1;
+CardHandler.prototype.startCardAnim = function(card) {
 	var self = this;
+	$(card).click(function() {
+		var $card = $(card);
+		// console.log(this);
+		var id = $card.attr('id');
+		console.log(self.isLocked(id));
+		if (self.isLocked(id)) return;
+		self.locks[id] = 1;
+		
+		var $cardBody = $card.find($('.card-body'));
+		var $cardBodyText = $cardBody.find('.card-body-inner');
+		if (!self.isAnswered(id)) {
+			// $cardBody.css("height", "auto");
+			$cardBodyText.velocity(
+				{ opacity: 1},
+				{ duration: 200,
+				easing: "easeInSine" }
+			);
+			self.answerStatus[id] = 1;
+			self.locks[id] = 0;
+			console.log(self.locks[id]);
 
-	var $cardBody = $card.find($('.card-body'));
-	var $cardBodyText = $cardBody.find('.card-body-inner');
-	if (!self.isAnswered(id)) {
-		// $cardBody.css("height", "auto");
-		$cardBodyText.velocity(
-			{ opacity: 1},
-			{ duration: 200, 
-			easing: "easeInSine" }
-		);
-		self.answerStatus[id] = 1;
-		self.locks[id] = 0;
-		console.log(self.locks[id]);
+		} else if (self.isAnswered(id)) {
+			console.log($cardBody);
+			// $cardBody.css("height", "50px");
+			$cardBodyText.velocity(
+				{ opacity: 0},
+				{ duration: 200, 
+				easing: "easeInSine" }
+			);
 
-	} else if (self.isAnswered(id)) {
-		console.log($cardBody);
-		// $cardBody.css("height", "50px");
-		$cardBodyText.velocity(
-			{ opacity: 0},
-			{ duration: 200, 
-			easing: "easeInSine" }
-		);
-
-		self.answerStatus[id] = 0;
-		self.locks[id] = 0;
-	}
+			self.answerStatus[id] = 0;
+			self.locks[id] = 0;
+		}
+	});
 }
+
+
 
 loadCardEvent = function() {
 	$(".card").mouseenter(window.cardHandler.mouseEnter);
 	$(".card").mouseleave(window.cardHandler.mouseLeave);
-	$(".card").on('click', window.cardHandler.getAnswer);
+	// $(".card").on('click', window.cardHandler.getAnswer);
 }
