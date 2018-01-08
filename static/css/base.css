@@ -19,7 +19,6 @@ body {
 }
 
 #left-navbar {
-	/*background-color : #ebebeb;*/
 	display: block;
 	position: fixed;
 	max-width: 20%;
@@ -65,4 +64,22 @@ body {
 	word-wrap: break-word;
 	overflow-y: scroll;
 	overflow-x: scroll;
+}
+
+#qbutton-nav {
+	display: none;
+}
+
+@media (max-width: 1055px) {
+    #left-navbar {
+        display:none;
+    }
+
+    #qbutton {
+    	display: none;
+    }
+
+    #qbutton-nav {
+    	display: inherit;
+    }
 }

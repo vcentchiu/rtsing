@@ -13,9 +13,6 @@ CardHandler.prototype.init = function() {
 	this.isAnswered = function(id) {
 		return (this.answerStatus[id] == 1);
 	}
-	
-	// this.loadCards(0);
-	console.log(this.locks);
 }
 
 
@@ -34,7 +31,7 @@ CardHandler.prototype.loadCards = function(startCard) {
 	};
 }
 
-CardHandler.prototype.loadCard = function(data, oncomplete) {
+CardHandler.prototype.loadCard = function(data) {
 	var self = this;
 	self.locks[id] = 0;
 	self.answerStatus[id] = 0;
@@ -48,6 +45,7 @@ CardHandler.prototype.loadCard = function(data, oncomplete) {
 	var cardDiv = document.createElement("div");
 	cardDiv.setAttribute("class", "card");
 	cardDiv.setAttribute("id", id);
+	window.loadCardEvent();
 
 	var cardTitle = document.createElement("div");
 	cardTitle.setAttribute("class", "card-title");
@@ -82,11 +80,25 @@ CardHandler.prototype.loadCard = function(data, oncomplete) {
 	cardDiv.append(cardTags);
 
 	$("#card-container").append(cardDiv);
-	oncomplete();
+	window.refreshLatex();
 }
 
+CardHandler.prototype.mouseEnter = function(event) {
+	var div = $(this).find($('.card-tags'));
+	div.velocity(
+		{ opacity: 1 },
+		{ duration: 100, 
+		  easing: "easeInSine" }
+	);
+}
 
-CardHandler.prototype.getAnswer = function($card) {
+CardHandler.prototype.mouseLeave = function(event) {
+	var div = $(this).find($('.card-tags'));
+	div.velocity("reverse");
+}
+
+CardHandler.prototype.getAnswer = function(event) {
+	var $card = $(this);
 	var id = $card.attr('id');
 	console.log(this.isLocked(id));
 	if (this.isLocked(id)) return;
@@ -120,30 +132,8 @@ CardHandler.prototype.getAnswer = function($card) {
 	}
 }
 
-$(function() {
-	// getDBCards();
-	var cardHandler = new CardHandler();
-	cardHandler.init();
-	console.log(cardHandler);
-
-	$(".card").mouseenter(function(e) {
-		var div = $(this).find($('.card-tags'));
-		div.velocity(
-			{ opacity: 1 },
-			{ duration: 100, 
-			  easing: "easeInSine" }
-		);
-	});
-	$(".card").mouseleave(function(e) {
-		var div = $(this).find($('.card-tags'));
-		div.velocity("reverse");
-
-	});
-
-	$(".card").click(function() {
-		cardHandler.getAnswer($(this));
-	});
-
-
-
-});
+loadCardEvent = function() {
+	$(".card").mouseenter(window.cardHandler.mouseEnter);
+	$(".card").mouseleave(window.cardHandler.mouseLeave);
+	$(".card").on('click', window.cardHandler.getAnswer);
+}

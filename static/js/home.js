@@ -50,8 +50,9 @@ function appendCards(cards) {
 		var year = date.getYear() + 1900;
 		var dateString = month + "/" + date.getDate() + "/" + year;
 		var id = card._id
-		cardHandler.loadCard({"id": id, "question": question, "answer": answer, "topics": topics, "date": dateString}, loadLatexCompiler);
+		cardHandler.loadCard({"id": id, "question": question, "answer": answer, "topics": topics, "date": dateString});
 	}
+	console.log("finished appending cards");
 }
 
 function getCards(topic, start, end) {
@@ -89,19 +90,27 @@ function answerLatexParser(item) {
 	MathJax.Hub.Queue(["Typeset",MathJax.Hub,"answerLatex"]);
 }
 
-function loadLatex() {
+window.loadCardEvent = function() {
+	console.log("Card loaded");
+	$(".card").mouseenter(window.cardHandler.mouseEnter);
+	$(".card").mouseleave(window.cardHandler.mouseLeave);
+	$(".card").on('click', window.cardHandler.getAnswer);
+}
+
+window.refreshLatex = function() {
 	MathJax.Hub.Queue(["Typeset",MathJax.Hub,"questionLatex"]);
 	MathJax.Hub.Queue(["Typeset",MathJax.Hub,"answerLatex"]);
 }
 
 function init() {
-	cardHandler = new CardHandler();
-	cardHandler.init();	
-
+	window.cardHandler = new CardHandler();
+	window.cardHandler.init();	
 	$("#topics li").on('click', highlightNavigation);
 	$("#topics li").hover(mouseEnterTopic, mouseLeaveTopic);
 	getCards(-1, 0, 10);
 	$("#qsubmit").on('click', addQuestion);
+	loadLatexCompiler();
+	setTimeout(window.refreshLatex, 1500);
 }
 
-$(document).ready(init());
+$(document).ready(init);
