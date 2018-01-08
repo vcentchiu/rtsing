@@ -106,7 +106,7 @@ function init() {
 	window.cardHandler = new CardHandler();
 	window.cardHandler.init();	
 	$("#topics li").on('click', highlightNavigation);
-	$("#topics li").hover(mouseEnterTopic, mouseLeaveTopic);
+	// $("#topics li").hover(mouseEnterTopic, mouseLeaveTopic);
 	getCards(-1, 0, 10);
 	$("#qsubmit").on('click', addQuestion);
 	loadLatexCompiler();

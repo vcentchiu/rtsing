@@ -1,9 +1,17 @@
 body {
 	background-color : #ebebeb;
 	font-family: 'Encode Sans Expanded', sans-serif;
-	background: #f0f0f0;
+	/*background: #f0f0f0;*/
 	color: #2e2e2e;
 }
+
+.cont-title {
+	font-size: 10px;
+	/*font-weight: bold;*/
+	/*margin: 5px 0;*/
+	margin-bottom: 20px;
+}
+
 #main {
 	padding: 10px;
 	padding-top: 100px;
@@ -38,10 +46,20 @@ body {
 }
 
 #topics li {
-	border-bottom: 1px dotted black;
+	/*border-bottom: 1px dotted black;*/
 	font-size: 15px;
 	border-radius: 4px;
-	padding: 5px;
+	margin: 2.5px;
+	/*padding: 5px 15px;*/
+}
+
+#topics li:hover {
+	color: blue;
+	opacity: .5;
+}
+
+#topics li:active {
+	opacity: 0.8;
 }
 
 #qbutton {

@@ -23,9 +23,9 @@ bg #f0f0f0;
 	border: none !important;
 }
 
-/*.card:hover {
-	box-shadow: 0 1px 15px rgba(200,200,200,0.12), 0 1px 5px rgba(200,200,200,0.24);
-}*/
+.card:hover {
+	box-shadow: 0 1px 15px rgba(170,170,170,0.12), 0 1px 5px rgba(170,170,170,0.24);
+}
 
 .card-title {
 	font-size: 15px;
