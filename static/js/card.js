@@ -151,12 +151,11 @@ CardHandler.prototype._loadCard = function(data) {
 	this._startCardAnim(cardDiv);
 
 	$("#card-container").append(cardDiv);
-
-	// need callback for appending card 
 	self.numLoaded += 1;
+	setTimeout(window.refreshLatex(), 400);
 
-	window.refreshLatex();
 }
+
 
 CardHandler.prototype._startCardAnim = function(card) {
 	var self = this;
@@ -179,7 +178,6 @@ CardHandler.prototype._startCardAnim = function(card) {
 			);
 			self.answerStatus[id] = 1;
 			self.locks[id] = 0;
-			console.log(self.locks[id]);
 
 		} else if (self.isAnswered(id)) {
 			console.log($cardBody);
