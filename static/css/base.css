@@ -5,6 +5,7 @@ body {
 	color: #2e2e2e;
 }
 
+
 .cont-title {
 	font-size: 10px;
 	/*font-weight: bold;*/
@@ -32,6 +33,12 @@ body {
 	max-width: 20%;
 	margin: 0 auto;
 	padding: 0 20px;
+}
+
+#middle-nav {
+	margin: 0 auto;
+	max-width: 700px;
+	font-size: 12px;
 }
 
 #title {
