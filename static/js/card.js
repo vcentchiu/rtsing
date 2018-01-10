@@ -82,7 +82,7 @@ CardHandler.prototype.loadCard = function(data) {
 	this.startCardAnim(cardDiv);
 
 	$("#card-container").append(cardDiv);
-	window.refreshLatex();
+	setTimeout(window.refreshLatex(), 400);
 }
 
 CardHandler.prototype.mouseEnter = function(event) {
@@ -120,7 +120,6 @@ CardHandler.prototype.startCardAnim = function(card) {
 			);
 			self.answerStatus[id] = 1;
 			self.locks[id] = 0;
-			console.log(self.locks[id]);
 
 		} else if (self.isAnswered(id)) {
 			console.log($cardBody);

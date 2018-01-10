@@ -98,8 +98,8 @@ window.loadCardEvent = function() {
 }
 
 window.refreshLatex = function() {
-	MathJax.Hub.Queue(["Typeset",MathJax.Hub,"questionLatex"]);
-	MathJax.Hub.Queue(["Typeset",MathJax.Hub,"answerLatex"]);
+	MathJax.Hub.Queue(["Typeset",MathJax.Hub,"card-title"]);
+	MathJax.Hub.Queue(["Typeset",MathJax.Hub,"card-body"]);
 }
 
 function init() {
