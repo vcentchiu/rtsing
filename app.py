@@ -20,13 +20,13 @@ def index():
 	return render_template("index.html")
 
 
-@app.route("/api/room/create")
+@app.route("/api/room/create", methods=["POST"])
 def create_room():
-
+	return
 
 @app.route("/api/room/join")
 def join_room():
-
+	return
 
 @app.route("/api/question/add", methods=["POST"])
 def add_question():
