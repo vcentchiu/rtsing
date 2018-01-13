@@ -1,22 +1,22 @@
 <!doctype html>
 <html>
-	<title>data science interview questions</title>
+	<title>RTCing</title>
 	<head>
 		<meta charset="utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded" rel="stylesheet">
-		<link rel="stylesheet" tyle="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-		<link rel="stylesheet" href="static/css/tagsinput.css"/>
-		<link rel="stylesheet" type="text/css" href="static/css/base.css">
-		<link rel="stylesheet" type="text/css" href="static/css/card.css">
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+		<link rel="stylesheet" type="text/css" href="static/api/Flat-UI/dist/css/vendor/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="static/api/Flat-UI/dist/css/flat-ui.css">
+		<link rel="stylesheet" type="text/css" href="static/css/home.css">
+
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
-		<script src="static/js/tagsinput.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.5.0/velocity.min.js"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML-full"></script>
-		<script src="static/js/card.js"></script>
-		<script src="static/js/home.js"></script>
-		<!-- Global site tag (gtag.js) - Google Analytics -->
+
+		<script src="static/js/home.js"> </script>
+
+
+		<!-- Global site tag (gtag.js) - Google Analytics 
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112239663-1"></script>
 		<script>
 			window.dataLayer = window.dataLayer || [];
@@ -24,92 +24,61 @@
 			gtag('js', new Date());
 			gtag('config', 'UA-112239663-1');
 		</script>
+		-->
 
 	</head>
 	<body>
-		<div id="navbar" class="navbar">
-			<div class="container">
-				<div id="title">data science interview questions</div>
-				<button type="button" id="qbutton-nav" class="btn btn-primary" data-toggle="modal" data-target="#addQuestion">
-					Add Question
-				</button>
+		<nav class="navbar navbar-default" role="navigation"> 
+			<div class="navbar-header">
+			    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+			      <span class="sr-only">Toggle navigation</span>
+			    </button>
+			    <a class="navbar-brand" href="#"> SingRTC </a>
 			</div>
-		</div>
+		</nav>
+		<div class="main">
+			<div id="loginContainer"> 
 
-		<div id="main"> 
-			<div id="left-navbar" class="navbar navbar-inverse navbar-fixed-left">
-				<div class="cont-title"> TOPICS </div>
-				<ul class="nav navbar-nav" id="topics">
-					<li>probability</li>
-					<li>statistics</li>
-					<li>machine learning</li>
-					<li>data engineering</li>
-				</ul>
-			</div>
+				<div class="row row-default">
+					<div class="row-title"> username: </div>
+				</div>
+				<div class="row row-default"> 
+					<div class="row-item">
+						<input id="username" type="text" placeholder="your username" class="form-control input-sm row-item" />
+					</div>
+				</div>
+				<div class="row"> </div>
 
-			<button type="button" id="qbutton" class="btn btn-primary" data-toggle="modal" data-target="#addQuestion">
-					Add Question
-			</button>
-
-			<div id="addQuestion" class="modal fade">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title">Add Question</h5>
-						</div>
-						<div class="modal-body">
-							<div class="question-header">
-								Question
-							</div>
-							<div class="input-group input-group-sm mb-3">
-								<textarea onkeyup="questionLatexParser(this)" rows=4 id="questionString" type="text" class="form-control" placeholder="Explain logistic regression."></textarea>
-							</div>
-							
-							<div class="question-subheader">
-								preview
-							</div>
-							
-							<div class="latex-preview" id="questionLatex">
-
-							</div>
-							
-							<br>
-
-							<div class="question-header">
-								Answer
-							</div>
-							<div class="input-group input-group-sm mb-3">
-								<textarea onkeyup="answerLatexParser(this)" rows=6 id="answerString" type="text" class="form-control" placeholder="Logistic regression is..."></textarea>
-							</div>
-							<div class="question-subheader">
-								preview
-							</div>
-							<div class="latex-preview" id="answerLatex">
-
-							</div>
-							
-							
-							
-							<div class="question-header">
-								Topics
-							</div>
-							<div class="input-group input-group-sm mb-3">
-								<input id="tags" type="text" value="" data-role="tagsinput"/>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" id="qsubmit" class="btn btn-primary">Add</button>
-						</div>
+				<div class="row row-default">
+					<div class="row-title"> create room: </div>
+				</div>
+				<div class="row row-default"> 
+					<div class="row-item">
+						<input id="createRoom" type="text" placeholder="enter new room id" class="form-control row-item" />
+					</div>
+					<div class="row-item">
+						<button id="createButton" class="btn btn-default row-item"> create </button>
 					</div>
 					
 				</div>
-			</div>
-			<div id="middle-nav-title" class="cont-title"> RECENT QUESTIONS </div>
-			<div id="middle-nav">
-				<div id="card-container"> </div>
-				<button type="button" class="btn btn-secondary" onclick="window.cardHandler.getNext()"> load more </button>
-			</div>
-			
+
+				<div class="row row-default">
+					<div class="row-title"> join room: </div>
+				</div>
+				<div class="row row-default"> 
+					<div class="row-item">
+						<input id="joinRoom" type="text" placeholder="enter room id" class="form-control row-item" />
+					</div>
+					<div class="row-item">
+						<button id="joinButton" class="btn btn-default row-item"> join </button>
+					</div>
+					
+				</div>
+				
+
+			</div> 
 		</div>
+		
+		
 	</body>
 </html>

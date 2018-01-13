@@ -1,0 +1,52 @@
+.sm {
+	font-size: 13px;
+}
+.rg {
+	font-size: 15px;
+}
+
+#loginContainer {
+	position: relative;
+	max-width: 400px;
+	margin: 0px auto;
+	background: #f9f9f9;
+	margin-top: 100px;
+	padding:  50px;
+	border-radius: 4px;
+	/*text-align: center;*/
+}
+
+.row {
+	padding: 5px;
+}
+
+.row-default {
+
+}
+
+.row-title {
+	text-align: left;
+}
+
+
+
+.row-item {
+	height: 100%;
+	display: inline-block !important;
+
+}
+
+#createRoom {
+	padding: 10px 15px !important;
+}
+#createButton {
+	min-width: 75px;
+}
+
+#joinRoom {
+	padding: 10px 15px !important;
+}
+#joinButton {
+	min-width: 75px;
+
+}

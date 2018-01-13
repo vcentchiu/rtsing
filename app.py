@@ -19,6 +19,15 @@ class JSONEncoder(json.JSONEncoder):
 def index():
 	return render_template("index.html")
 
+
+@app.route("/api/room/create")
+def create_room():
+
+
+@app.route("/api/room/join")
+def join_room():
+
+
 @app.route("/api/question/add", methods=["POST"])
 def add_question():
 	try:
